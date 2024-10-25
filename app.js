@@ -3,8 +3,10 @@
 
   angular.module('ShoppingListCheckOff', [])
   .controller('ToBuyController', ToBuyController)
-  .controller('AlreadyBoughtController', AlreadyBoughtController);
+  .controller('AlreadyBoughtController', AlreadyBoughtController)
+  .factory('ShoppingListFactory' ShoppingListFactory;
 
-  ToBuyController.$inject = ['$scope'];
-  function ToBuyController($scope) {
-    $scope.
+  //To Buy Controller
+  ToBuyController.$inject = ['ShoppingListFactory'];
+  function ToBuyController(ShoppingListFactory) {
+    
