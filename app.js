@@ -7,45 +7,60 @@
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
   // To Buy Controller
+  
   ToBuyController.$inject = ['ShoppingListCheckOffService'];
+  
   function ToBuyController(ShoppingListCheckOffService) {
-    var service = ShoppingListCheckOffService;
-    var ctrl1 = this;
-    ctrl1.list = service.getToBuyList();
-        ctrl1.isEmpty = service.isToBuyListEmpty;
-        ctrl1.checkOff = service.checkOff;
+    var toBuyList = this;
+    
+    toBuyList.items = ShoppingListCheckOffService.getToBuyItems();
+    
+        toBuyList.buyItem = function(itemIndex) {
+        ShoppingListCheckOffService.buyItem(itemIndex);
     }
   
   // Already Bought Controller
+    
   AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+ 
   function AlreadyBoughtController(ShoppingListCheckOffService) {
-    var service = ShoppingListCheckOffService;
-    var ctrl2 = this;
-    ctrl2.list = service.getBoughtList();
-    ctrl2.isEmpty = service.isBoughtListEmpty;
+    var alreadyBoughtList = this;
+    
+    alreadyBoughtlist.items = ShoppingListCheckOffService.getAlreadyBoughtItems();
+  
   }
 
   function ShoppingListCheckOffService() {
     var service = this;
+    var toBuyItems = [
+      { name: "Cookies", quantity: "10"},
+      { name: "Snickers" , quantity: "2"},
+      { name: "Pears" , quantity: "4"},
+      { name: "Cucumbers" , quantity: "5"},
+      { name: "Apples" , quantity: "6"}
+      ];
 
-    service.toBuyList = { item.name "Cookies", item.quantity "10"};
+var alreadyBoughtItems = [];
 
-service.boughtList = [];
-
-service.checkOff = function (itemIndex) {
-  var boughtItem = service.toBuyList.splice(itemIndex, 1) [0];
-  service.boughtList.push(boughtItem);
+service.buyItem = function (itemIndex) {
+  var item = toBuyItems[itemIndex];
+    
+ alreadyBoughtItems.push(item);  
+  toBuyItems.splice(itemIndex, 1);
 };
 
-service.getToBuyList = function() {
-  return service.boughtList;
+service.getToBuyItems = function() {
+  return toBuyItems;
 };
 
-service.isToBuyListEmpty = function () {
-  return service.toBuyList.length == 0;
+service.getAlreadyBoughtItems = function() {
+  return alreadyBoughtItems
+
+service.isgetToBuyItemsEmpty = function () {
+  return service.toBuyItems.length == 0;
 };
 
-service.isBoughtListEmpty = function () {
+service.isgetAlreadyBoughtItemsempty = function () {
             return service.boughtList.length == 0;
         };
     }
