@@ -8,10 +8,17 @@
 
   // To Buy Controller
   
-  ToBuyController.$inject = [];
-  
-  function ToBuyController(ShoppingListCheckOffService) {
-    var toBuyList = this;
+  ShoppingListCheckOffService.$inject = [];
+
+    function ShoppingListCheckOffService() {
+    var service = this;
+    list.toBuyItems = [
+      { name: "Cookies", quantity: "10"},
+      { name: "Snickers" , quantity: "2"},
+      { name: "Pears" , quantity: "4"},
+      { name: "Cucumbers" , quantity: "5"},
+      { name: "Apples" , quantity: "6"}
+      ];
     
     toBuyList.items = ShoppingListCheckOffService.getToBuyItems();
     
@@ -30,15 +37,7 @@
   
   }
 
-  function ShoppingListCheckOffService() {
-    var service = this;
-    list.toBuyItems = [
-      { name: "Cookies", quantity: "10"},
-      { name: "Snickers" , quantity: "2"},
-      { name: "Pears" , quantity: "4"},
-      { name: "Cucumbers" , quantity: "5"},
-      { name: "Apples" , quantity: "6"}
-      ];
+ 
 
 list.alreadyBoughtItems = [];
 
