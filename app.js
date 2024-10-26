@@ -30,12 +30,12 @@
 
     service.toBuyList = [
 {
-      name: "Cookies"
-      quantity: "10"
+      item.name: "Cookies"
+     item.quantity: "10"
   },
  {
-      name: "Oreos"
-      quantity: "10"
+      item.name: "Oreos"
+      item.quantity: "10"
 }
 ];
 
