@@ -28,7 +28,7 @@
   
   // Already Bought Controller
     
-  AlreadyBoughtController.$inject = [];
+  AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
  
   function AlreadyBoughtController(ShoppingListCheckOffService) {
     var service = this;
