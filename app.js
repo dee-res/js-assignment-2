@@ -65,6 +65,6 @@ service.isgetAlreadyBoughtItemsempty = function () {
         };
     }
 
-})();
+}();
       
     
