@@ -31,11 +31,11 @@
     service.toBuyList = [
 {
       name: "Cookies"
-      quantity: 10
+      quantity: "10"
   },
  {
       name: "Oreos"
-      quantity: 10
+      quantity: "10"
 }
 ];
 
