@@ -32,7 +32,7 @@
 
   function ShoppingListCheckOffService() {
     var service = this;
-    var toBuyItems = [
+    list.toBuyItems = [
       { name: "Cookies", quantity: "10"},
       { name: "Snickers" , quantity: "2"},
       { name: "Pears" , quantity: "4"},
@@ -40,13 +40,13 @@
       { name: "Apples" , quantity: "6"}
       ];
 
-var alreadyBoughtItems = [];
+list.alreadyBoughtItems = [];
 
-service.buyItem = function (itemIndex) {
+list.buyItem = function (itemIndex) {
   var item = toBuyItems[itemIndex];
     
  alreadyBoughtItems.push(item);  
-  toBuyItems.splice(itemIndex, 1);
+  toBuyItems.splice(itemIndex, 1)[0];
 };
 
 service.getToBuyItems = function() {
