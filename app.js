@@ -20,9 +20,9 @@
       { name: "Apples" , quantity: "6"}
       ];
     
-    toBuyList.items = ShoppingListCheckOffService.getToBuyItems();
+    list.toBuyItems = ShoppingListCheckOffService.getToBuyItems();
     
-        toBuyList.buyItem = function(itemIndex) {
+        toBuyItems.buyItem = function(itemIndex) {
         ShoppingListCheckOffService.buyItem(itemIndex);
     }
   
