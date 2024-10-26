@@ -29,7 +29,7 @@
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6" ng-controller='ToBuyController as listCtrl'>
+    <div class="col-md-6" ng-controller='ToBuyController as listCtrl1'>
      <h2>To Buy:</h2>
      <ul>
        <li ng-repeat="item in listCtrl.list>Buy: "{{item_quantity}}" , name: "{{item_name}}" <button class="btn btn-default" ng-click="list.checkOff($index)><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
@@ -38,10 +38,10 @@
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller='AlreadyBoughtController as listCtrl'>
+    <div class="col-md-6" ng-controller='AlreadyBoughtController as listCtrl2'>
      <h2>Already Bought:</h2>
      <ul>
-      <li ng-repeat="item in listCtrl.list">Bought "{{item.quantity}}" , name: "{{item.name}}" </li>
+      <li ng-repeat="item in listCtrl.list">Bought "{{item_quantity}}" , name: "{{item_name}}" </li>
      </ul>
      <div class="emptyMessage" ng-if="listCtrl.isEmpty()">Nothing bought yet.</div>
     </div>
