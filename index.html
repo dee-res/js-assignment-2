@@ -32,8 +32,8 @@
     <div class="col-md-6" ng-controller='ToBuyController as listCtrl'>
      <h2>To Buy:</h2>
      <ul>
-       <li ng-repeat="item in listCtrl.list>Buy {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="list.checkOff($index)><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <li ng-repeat="item in listCtrl.list>Buy {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="list.checkOff($index)><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in listCtrl.list>Buy: "{{item_quantity}}" , name: "{{item_name}}" <button class="btn btn-default" ng-click="list.checkOff($index)><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in listCtrl.list>Buy: "{{item_quantity}}" , name: "{{item_name}}" <button class="btn btn-default" ng-click="list.checkOff($index)><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      <div class="emptyMessage" ng-if="list.Ctrl.isEmpty()">Everything is bought!</div>
     </div>
 
@@ -41,7 +41,7 @@
     <div class="col-md-6" ng-controller='AlreadyBoughtController as listCtrl'>
      <h2>Already Bought:</h2>
      <ul>
-      <li ng-repeat="item in listCtrl.list">Bought {{item.quantity}} {{item.name}}</li>
+      <li ng-repeat="item in listCtrl.list">Bought "{{item.quantity}}" , name: "{{item.name}}" </li>
      </ul>
      <div class="emptyMessage" ng-if="listCtrl.isEmpty()">Nothing bought yet.</div>
     </div>
