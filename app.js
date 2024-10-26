@@ -8,9 +8,9 @@
 
   // To Buy Controller
   
-  ShoppingListCheckOffService.$inject = [];
+  ShoppingListCheckOffService.$inject = ['ShoppingListCheckOffService'];
 
-    function ShoppingListCheckOffService() {
+    function ToBuyController(ShoppingListCheckOffService) {
     var service = this;
     list.toBuyItems = [
       { name: "Cookies", quantity: "10"},
@@ -36,8 +36,6 @@
     alreadyBoughtlist.items = ShoppingListCheckOffService.getAlreadyBoughtItems();
   
   }
-
- 
 
 list.alreadyBoughtItems = [];
 
