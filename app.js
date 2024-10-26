@@ -43,28 +43,13 @@
 list.alreadyBoughtItems = [];
 
 list.buyItem = function (itemIndex) {
-  var item = toBuyItems[itemIndex];
-    
- alreadyBoughtItems.push(item);  
-  toBuyItems.splice(itemIndex, 1)[0];
+  var item = list.toBuyItems.splice(itemIndex, 1)[0];
+  list.alreadyBoughtItems.push(item);
 };
 
-service.getToBuyItems = function() {
-  return toBuyItems;
-};
+  }
 
-service.getAlreadyBoughtItems = function() {
-  return alreadyBoughtItems
 
-service.isgetToBuyItemsEmpty = function () {
-  return service.toBuyItems.length == 0;
-};
-
-service.isgetAlreadyBoughtItemsempty = function () {
-            return service.boughtList.length == 0;
-        };
-    }
-
-}();
+})();
       
     
