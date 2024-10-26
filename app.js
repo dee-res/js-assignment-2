@@ -28,16 +28,7 @@
   function ShoppingListCheckOffService() {
     var service = this;
 
-    service.toBuyList = [
-{
-      item.name: "Cookies"
-     item.quantity: "10"
-  },
- {
-      item.name: "Oreos"
-      item.quantity: "10"
-}
-];
+    service.toBuyList = [ item.name: "Cookies", item.quantity: "10"];
 
 service.boughtList = [];
 
