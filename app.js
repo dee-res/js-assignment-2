@@ -47,6 +47,18 @@ service.checkOff = function (itemIndex) {
 };
 
 service.getToBuyList = function() {
-  
+  return service.boughtList;
+};
+
+service.isToBuyListEmpty = function () {
+  return service.toBuyList.length == 0;
+};
+
+service.isBoughtListEmpty = function () {
+            return service.boughtList.length == 0;
+        };
+    }
+
+})();
       
     
