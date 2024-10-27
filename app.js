@@ -2,6 +2,7 @@
   'use strict';
 
   angular.module('ShoppingListCheckOff', [])
+  .controller('ShoppingListController', ShoppingListController)
   .controller('ToBuyController', ToBuyController)
   .controller('AlreadyBoughtController', AlreadyBoughtController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
