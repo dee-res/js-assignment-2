@@ -13,11 +13,11 @@
     function ToBuyController(ShoppingListCheckOffService) {
     var service = this;
     list.toBuyItems = [
-      { name: "Cookies", quantity: "10"},
-      { name: "Snickers" , quantity: "2"},
-      { name: "Pears" , quantity: "4"},
-      { name: "Cucumbers" , quantity: "5"},
-      { name: "Apples" , quantity: "6"}
+      { item.name: "Cookies", item.quantity: "10"},
+      { item.name: "Snickers" , item.quantity: "2"},
+      { item.name: "Pears" , item.quantity: "4"},
+      { item.name: "Cucumbers" , item.quantity: "5"},
+      { item.name: "Apples" , item.quantity: "6"}
       ];
     
     list.toBuyItems = ShoppingListCheckOffService.getToBuyItems();
