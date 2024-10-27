@@ -6,11 +6,8 @@
   .controller('AlreadyBoughtController', AlreadyBoughtController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
-  // To Buy Controller
-  
-  ShoppingListCheckOffService.$inject = ['ShoppingListCheckOffService'];
-
-    function ToBuyController(ShoppingListCheckOffService) {
+  //Service Definition
+   function ToBuyController(ShoppingListCheckOffService) {
     var service = this;
     list.toBuyItems = [
       { name: "Cookies", quantity: "10"},
@@ -19,10 +16,30 @@
       { name: "Cucumbers" , quantity: "5"},
       { name: "Apples" , quantity: "6"}
       ];
-    
-    list.toBuyItems = ShoppingListCheckOffService.getToBuyItems();
-    
-        toBuyItems.buyItem = function(itemIndex) {
+  var boughtItems = [];
+
+  service.getToBuyItems = function () {
+    return toBuyItems;
+  };
+
+  service.getBoughtItems = function () {
+    return boughtItems;
+  };
+
+
+  service.buyItem = function (itemIndex) {
+    boughtItems.push(toBuyItems[itemIndex]);
+    toBuyItems.splice(itemIndex, 1);
+  };
+}  
+
+  // To Buy Controller
+  
+  ShoppingListCheckOffService.$inject = ['ShoppingListCheckOffService'];
+function ToBuyController(ShoppingListCheckOffService) {
+  var buyCtrl = this; // Use 'this' or a variable assigned to 'this'
+  buyCtrl.toBuyItems = ShoppingListCheckOffService.getToBuyItems(); 
+  buyCtrl.buyItem = function(itemIndex) {
         ShoppingListCheckOffService.buyItem(itemIndex);
     }
   
@@ -31,20 +48,12 @@
   AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
  
   function AlreadyBoughtController(ShoppingListCheckOffService) {
-    var service = this;
+    var boughtCtrl = this;
     
-    list.alreadyBoughtItems = ShoppingListCheckOffService.getAlreadyBoughtItems();
+    boughtCtrl.boughtItems = ShoppingListCheckOffService.getAlreadyBoughtItems();
   
   }
 
-list.alreadyBoughtItems = [];
-
-list.buyItems = function (itemIndex) {
-  var item = list.toBuyItems.splice(itemIndex, 1)[0];
-  list.alreadyBoughtItems.push(item);
-};
-
-  }
 
 
 })();
