@@ -29,21 +29,21 @@
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6" ng-controller='ToBuyController as toBuyItems'>
+    <div class="col-md-6" ng-controller='ToBuyController as list.toBuyItems'>
      <h2>To Buy:</h2>
      <ul>
-       <li ng-repeat="item in toBuyItems.items">Buy: {{item.quantity}}  name: {{item.name}} <button class="btn btn-default" ng-click="toBuyItems.buyItem($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in toBuyItems.items">Buy quantity: {{item_quantity}}  name: {{item_name}} <button class="btn btn-default" ng-click="list.tobuyItems($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>  
-     <div class="emptyMessage" ng-if="toBuyItems.items.length == 0">Everything is bought!</div>
+     <div class="emptyMessage" ng-if="list.toBuyItems.length == 0">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller='AlreadyBoughtController as alreadyBoughtItems'>
+    <div class="col-md-6" ng-controller='AlreadyBoughtController as list.alreadyBoughtItems'>
      <h2>Already Bought:</h2>
      <ul>
-      <li ng-repeat="item in alreadyBoughtItems.items">Bought: {{item.quantity}}  name: {{item.name}} </li>
+      <li ng-repeat="item in list.alreadyBoughtItems">Bought quantity: {{item_quantity}}  name: {{item_name}} </li>
      </ul>
-     <div class="emptyMessage" ng-if="alreadyBoughtItems.items.length == 0">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-if="list.alreadyBoughtItems.length == 0">Nothing bought yet.</div>
     </div>
   </div>
 </div>
