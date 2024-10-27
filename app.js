@@ -27,7 +27,7 @@
   };
 
 
-  service.buyItem = function (itemIndex) {
+  service.buyItems = function (itemIndex) {
     boughtItems.push(toBuyItems[itemIndex]);
     toBuyItems.splice(itemIndex, 1);
   };
@@ -39,7 +39,7 @@
 function ToBuyController(ShoppingListCheckOffService) {
   var buyCtrl = this; // Use 'this' or a variable assigned to 'this'
   buyCtrl.toBuyItems = ShoppingListCheckOffService.getToBuyItems(); 
-  buyCtrl.buyItem = function(itemIndex) {
+  buyCtrl.buyItems = function(itemIndex) {
         ShoppingListCheckOffService.buyItem(itemIndex);
     }
   
