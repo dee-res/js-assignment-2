@@ -2,15 +2,35 @@
   'use strict';
 
   angular.module('ShoppingListCheckOff', [])
-  .controller('ShoppingListController', ShoppingListController)
   .controller('ToBuyController', ToBuyController)
   .controller('AlreadyBoughtController', AlreadyBoughtController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
+  // To Buy Controller
+  
+ToBuyController.$inject = ['ShoppingListCheckOffService'];
+function ToBuyController(ShoppingListCheckOffService) {
+  var buyCtrl = this; 
+  toBuyCtrl.items = ShoppingListCheckOffService.getToBuyItems(); 
+  toBuyCtrl.buyItem = function(itemIndex) {
+        ShoppingListCheckOffService.buyItem(itemIndex);
+    }
+  
+  // Already Bought Controller
+    
+  AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+ 
+  function AlreadyBoughtController(ShoppingListCheckOffService) {
+    var boughtCtrl = this;
+    
+    boughtCtrl.items = ShoppingListCheckOffService.getBoughtItems();
+  
+  }
+
   //Service Definition
-   function ToBuyController(ShoppingListCheckOffService) {
+   function ShoppingListCheckOffService () {
     var service = this;
-    list.toBuyItems = [
+    var toBuyItems = [
       { name: "Cookies", quantity: "10"},
       { name: "Snickers" , quantity: "2"},
       { name: "Pears" , quantity: "4"},
@@ -29,34 +49,11 @@
 
 
   service.buyItems = function (itemIndex) {
-    boughtItems.push(toBuyItems[itemIndex]);
+   var item = toBuyItems[itemIndex];
     toBuyItems.splice(itemIndex, 1);
+    boughtItems.push(item);
   };
 }  
-
-  // To Buy Controller
-  
-  ShoppingListCheckOffService.$inject = ['ShoppingListCheckOffService'];
-function ToBuyController(ShoppingListCheckOffService) {
-  var buyCtrl = this; // Use 'this' or a variable assigned to 'this'
-  buyCtrl.toBuyItems = ShoppingListCheckOffService.getToBuyItems(); 
-  buyCtrl.buyItems = function(itemIndex) {
-        ShoppingListCheckOffService.buyItem(itemIndex);
-    }
-  
-  // Already Bought Controller
-    
-  AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
- 
-  function AlreadyBoughtController(ShoppingListCheckOffService) {
-    var boughtCtrl = this;
-    
-    boughtCtrl.boughtItems = ShoppingListCheckOffService.getAlreadyBoughtItems();
-  
-  }
-
-
-
-}();
+})();
       
     
