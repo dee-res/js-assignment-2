@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  angular.module('ShoppingListCheckOff', [])
+  angular
+  .module('ShoppingListCheckOff', [])
   .controller('ToBuyController', ToBuyController)
   .controller('AlreadyBoughtController', AlreadyBoughtController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
@@ -48,7 +49,7 @@ function ToBuyController(ShoppingListCheckOffService) {
   };
 
 
-  service.buyItems = function (itemIndex) {
+  service.buyItem = function (itemIndex) {
    var item = toBuyItems[itemIndex];
     toBuyItems.splice(itemIndex, 1);
     boughtItems.push(item);
