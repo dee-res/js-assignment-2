@@ -9,7 +9,7 @@
 
   // To Buy Controller
   
-ToBuyController.$inject = ['ShoppingListCheckOffService'];
+ToBuyController.$inject = ["ShoppingListCheckOffService"];
 function ToBuyController(ShoppingListCheckOffService) {
   var buyCtrl = this; 
   toBuyCtrl.items = ShoppingListCheckOffService.getToBuyItems(); 
