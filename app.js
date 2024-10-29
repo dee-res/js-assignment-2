@@ -13,7 +13,7 @@ function ToBuyController(ShoppingListCheckOffService) {
   var toBuy = this; 
   
   toBuy.bought = function (index) {
-    ShoppingListCheckOffService.boughtItems(index); 
+    ShoppingListCheckOffService.alreadyBoughtItems(index); 
   }
   toBuy.isEmpty = function()
     return ShoppingListCheckOffService.emptyBuy();
