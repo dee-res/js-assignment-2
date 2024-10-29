@@ -14,10 +14,10 @@ function ToBuyController(ShoppingListCheckOffService){
   
   buyList.bought = function(index){
     ShoppingListCheckOffService.boughtItems(index); 
-  }
+  };
   buyList.isEmpty = function(){
     return ShoppingListCheckOffService.emptyBuy();
-}
+};
   
   buyList.items = ShoppingListCheckOffService.showbuyItems();
     }
@@ -32,39 +32,26 @@ function ToBuyController(ShoppingListCheckOffService){
     
 	boughtList.isEmpty = function(){
 			return ShoppingListCheckOffService.emptyBought();
-		}
+		};
 	}
 
   //Service Definition
    function ShoppingListCheckOffService(){
     var service = this;
     var toBuy = [
-      { 
-	name: "Cookies", 
-        quantity: "10"
-      },
-      { name: "Snickers", 
-        quantity: "2"
-      },
-      { 
-	name: "Pears", 
-	quantity: "4"
-      },
-      { 
-	name: "Cucumbers",
-	quantity: "5"
-      },
-      { name: "Apples", 
-       	quantity: "6"
-      }
+      { name: "Cookies", quantity: "10"},
+      { name: "Snickers", quantity: "2" },
+      { name: "Pears", quantity: "4" },
+      { name: "Cucumbers", quantity: "5" },
+      { name: "Apples", quantity: "6" }
       ];
   
 var alreadyBought = [];
 
 service.boughtItems = function(index){
 alreadyBought.push(toBuy[index]);
-toBuy.splice(index,1);
-  }
+toBuy.splice(index, 1);
+  };
 
   service.showbuyItems = function(){
     return toBuy;
@@ -74,19 +61,13 @@ toBuy.splice(index,1);
     return alreadyBought;
   };
 service.emptyBuy = function(){
-  if (toBuy.length === 0) {
-    return true;
-    else return false;
-}
+ return toBuy.length === 0;
+};
      
 service.emptyBought = function(){
-			if (alreadyBought.length === 0){
-				return true;
-			}
-			else return false;
-		}
- 
-}  
+	return alreadyBought.length === 0;
+};
+   }
 })();
       
     
