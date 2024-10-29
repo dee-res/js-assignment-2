@@ -10,28 +10,28 @@ angular.module('ShoppingListCheckOff',[])
 	
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService){
-  var toBuyList = this; 
+  var buyList = this; 
   
-  toBuyList.bought = function(index){
-    ShoppingListCheckOffService.alreadyBoughtItems(index); 
+  buyList.bought = function(index){
+    ShoppingListCheckOffService.boughtItems(index); 
   }
-  toBuyList.isEmpty = function(){
-    return ShoppingListCheckOffService.emptyToBuy();
+  buyList.isEmpty = function(){
+    return ShoppingListCheckOffService.emptyBuy();
 }
   
-  toBuyList.items = ShoppingListCheckOffService.showToBuyItems();
+  buyList.items = ShoppingListCheckOffService.showbuyItems();
     }
   
   // Already Bought Controller
     
   AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
  function AlreadyBoughtController(ShoppingListCheckOffService){
-    var alreadyBoughtList = this;
+    var boughtList = this;
     
-    alreadyBoughtList.items = ShoppingListCheckOffService.showAlreadyBoughtItems();
+    boughtList.items = ShoppingListCheckOffService.showBoughtItems();
     
-	alreadyBoughtList.isEmpty = function(){
-			return ShoppingListCheckOffService.emptyAlreadyBought();
+	boughtList.isEmpty = function(){
+			return ShoppingListCheckOffService.emptyBought();
 		}
 	}
 
@@ -39,39 +39,51 @@ function ToBuyController(ShoppingListCheckOffService){
    function ShoppingListCheckOffService(){
     var service = this;
     var toBuy = [
-      { name: "Cookies", quantity: "10"},
-      { name: "Snickers" , quantity: "2"},
-      { name: "Pears" , quantity: "4"},
-      { name: "Cucumbers" , quantity: "5"},
-      { name: "Apples" , quantity: "6"}
+      { 
+	name: "Cookies", 
+        quantity: "10"
+      },
+      { name: "Snickers", 
+        quantity: "2"
+      },
+      { 
+	name: "Pears", 
+	quantity: "4"
+      },
+      { 
+	name: "Cucumbers",
+	quantity: "5"
+      },
+      { name: "Apples", 
+       	quantity: "6"
+      }
       ];
-  var alreadyBought = [];
+  
+var alreadyBought = [];
 
-   service.alreadyBoughtItems = function(index){
-    alreadyBought.push(toBuy[index]);
-    toBuy.splice(index,1);
+service.boughtItems = function(index){
+alreadyBought.push(toBuy[index]);
+toBuy.splice(index,1);
   }
 
-  service.showToBuyItems = function(){
+  service.showbuyItems = function(){
     return toBuy;
   };
 
-  service.showAlreadyBoughtItems = function(){
+  service.showBoughtItems = function(){
     return alreadyBought;
   };
-service.emptyToBuy = function(){
+service.emptyBuy = function(){
   if (toBuy.length === 0) {
     return true;
-    else {
-	  return false;
+    else return false;
 }
      
-service.emptyAlreadyBought = function(){
+service.emptyBought = function(){
 			if (alreadyBought.length === 0){
 				return true;
 			}
-			else {
-				return false;
+			else return false;
 		}
  
 }  
