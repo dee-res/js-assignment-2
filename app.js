@@ -13,13 +13,13 @@ function ToBuyController(ShoppingListCheckOffService) {
   var toBuy = this; 
   
   toBuy.bought = function (index) {
-    ShoppingListCheckOffService.alreadyBoughtItems(index); 
+    ShoppingListCheckOffService.alreadyBought(index); 
   }
   toBuy.isEmpty = function()
     return ShoppingListCheckOffService.emptyBuy();
 }
   
-  toBuy.items = ShoppingListCheckOffService.showtoBuyItems();
+  toBuy.items = ShoppingListCheckOffService.showtoBuy();
     }
   
   // Already Bought Controller
@@ -28,7 +28,7 @@ function ToBuyController(ShoppingListCheckOffService) {
  function AlreadyBoughtController(ShoppingListCheckOffService) {
     var alreadyBought = this;
     
-    alreadyBought.items = ShoppingListCheckOffService.showalreadyBoughtItems();
+    alreadyBought.items = ShoppingListCheckOffService.showalreadyBought();
     
 	alreadyBought.isEmpty = function()
 		{
@@ -46,19 +46,19 @@ function ToBuyController(ShoppingListCheckOffService) {
       { name: "Cucumbers" , quantity: "5"},
       { name: "Apples" , quantity: "6"}
       ];
-  var alreadyBoughtItems = [];
+  var alreadyBought = [];
 
-   service.alreadyBoughtItems = function (index) {
-    alreadyBought.push(toBuyItems[index]);
+   service.alreadyBought = function (index) {
+    alreadyBought.push(toBuy[index]);
     toBuy.splice(index,1);
   }
 
-  service.showtoBuyItems = function () {
-    return toBuyItems;
+  service.showtoBuy = function () {
+    return toBuy;
   };
 
-  service.showalreadyBoughtItems = function () {
-    return alreadyBoughtItems;
+  service.showalreadyBought = function () {
+    return alreadyBought;
   };
 service.emptytoBuy = function(){
   if (toBuy.length === 0) {
