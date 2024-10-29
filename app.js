@@ -1,8 +1,7 @@
 (function () {
   'use strict';
 
-  angular
-  .module('ShoppingListCheckOff', [])
+  angular.module('ShoppingListCheckOff', [])
   .controller('ToBuyController', ToBuyController)
   .controller('AlreadyBoughtController', AlreadyBoughtController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
@@ -13,10 +12,14 @@ ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService) {
   var toBuyCtrl = this; 
   
-  toBuyCtrl.items = ShoppingListCheckOffService.gettoBuyItems(); 
+  toBuyCtrl.bought = function (index) {
+    ShoppingListCheckOffService.boughtItems(index); 
+  }
+  toBuyCtrl.isEmpty = function()
+    return ShoppingListCheckOffService.emptyBuy();
+}
   
-  toBuyCtrl.buyItem = function(itemIndex) {
-        ShoppingListCheckOffService.buyItem(itemIndex);
+  toBuyCtrl.items = ShoppingListCheckOffService.showBuyItems();
     }
   
   // Already Bought Controller
@@ -25,9 +28,13 @@ function ToBuyController(ShoppingListCheckOffService) {
  function AlreadyBoughtController(ShoppingListCheckOffService) {
     var boughtCtrl = this;
     
-    boughtCtrl.items = ShoppingListCheckOffService.getboughtItems();
- };
-  }
+    boughtCtrl.items = ShoppingListCheckOffService.showBoughtItems();
+    
+     boughtList.isEmpty = function()
+		{
+			return ShoppingListCheckOffService.emptyBought();
+		}
+	}
 
   //Service Definition
    function ShoppingListCheckOffService () {
@@ -41,20 +48,31 @@ function ToBuyController(ShoppingListCheckOffService) {
       ];
   var boughtItems = [];
 
-  service.getToBuyItems = function () {
+   service.boughtItems = function (index) {
+    alreadyBought.push(toBuyItems[index]);
+    toBuy.splice(index,1);
+  }
+
+  service.showtoBuyItems = function () {
     return toBuyItems;
   };
 
-  service.getBoughtItems = function () {
+  service.showBoughtItems = function () {
     return boughtItems;
   };
-
-
-  service.buyItem = function (itemIndex) {
-   var item = toBuyItems[itemIndex];
-    toBuyItems.splice(itemIndex, 1);
-    boughtItems.push(item);
-  };
+service.emptyBuy = function(){
+  if (toBuy.length === 0) {
+    return true;
+    else return false;
+}
+     
+service.emptyBought = function(){
+			if (alreadyBought.length === 0){
+				return true;
+			}
+			else return false;
+		}
+ 
 }  
 })();
       
