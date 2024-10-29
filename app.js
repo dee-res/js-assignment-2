@@ -62,14 +62,16 @@ function ToBuyController(ShoppingListCheckOffService){
 service.emptyToBuy = function(){
   if (toBuy.length === 0) {
     return true;
-    else return false;
+    else {
+	  return false;
 }
      
 service.emptyAlreadyBought = function(){
 			if (alreadyBought.length === 0){
 				return true;
 			}
-			else return false;
+			else {
+				return false;
 		}
  
 }  
