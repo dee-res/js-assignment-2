@@ -13,7 +13,7 @@ ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService) {
   var toBuyCtrl = this; 
   
-  toBuyCtrl.items = ShoppingListCheckOffService.getToBuyItems(); 
+  toBuyCtrl.items = ShoppingListCheckOffService.gettoBuyItems(); 
   
   toBuyCtrl.buyItem = function(itemIndex) {
         ShoppingListCheckOffService.buyItem(itemIndex);
@@ -25,7 +25,7 @@ function ToBuyController(ShoppingListCheckOffService) {
  function AlreadyBoughtController(ShoppingListCheckOffService) {
     var boughtCtrl = this;
     
-    boughtCtrl.items = ShoppingListCheckOffService.getBoughtItems();
+    boughtCtrl.items = ShoppingListCheckOffService.getboughtItems();
  };
   }
 
