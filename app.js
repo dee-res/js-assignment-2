@@ -1,37 +1,37 @@
-(function () {
+(function (){
   'use strict';
 
-angular.module('ShoppingListCheckOff', [])
+angular.module('ShoppingListCheckOff',[])
   .controller('ToBuyController', ToBuyController)
   .controller('AlreadyBoughtController', AlreadyBoughtController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
 // To Buy Controller
+	
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService){
-  var toBuy = this; 
+  var toBuyList = this; 
   
-  toBuy.bought = function (index){
+  toBuyList.bought = function(index){
     ShoppingListCheckOffService.alreadyBoughtItems(index); 
   }
-  toBuy.isEmpty = function()
-  {
-    return ShoppingListCheckOffService.emptytoBuy();
+  toBuyList.isEmpty = function(){
+    return ShoppingListCheckOffService.emptyToBuy();
 }
   
-  toBuy.items = ShoppingListCheckOffService.showtoBuyItems();
+  toBuyList.items = ShoppingListCheckOffService.showToBuyItems();
     }
   
   // Already Bought Controller
     
   AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
- function AlreadyBoughtController(ShoppingListCheckOffService) {
-    var alreadyBought = this;
+ function AlreadyBoughtController(ShoppingListCheckOffService){
+    var alreadyBoughtList = this;
     
-    alreadyBought.items = ShoppingListCheckOffService.showalreadyBoughtItems();
+    alreadyBoughtList.items = ShoppingListCheckOffService.showAlreadyBoughtItems();
     
-	alreadyBought.isEmpty = function() {
-			return ShoppingListCheckOffService.emptyalreadyBought();
+	alreadyBoughtList.isEmpty = function(){
+			return ShoppingListCheckOffService.emptyAlreadyBought();
 		}
 	}
 
@@ -52,20 +52,20 @@ function ToBuyController(ShoppingListCheckOffService){
     toBuy.splice(index,1);
   }
 
-  service.showtoBuy = function(){
+  service.showToBuyItems = function(){
     return toBuy;
   };
 
-  service.showalreadyBought = function(){
+  service.showAlreadyBoughtItems = function(){
     return alreadyBought;
   };
-service.emptytoBuy = function(){
+service.emptyToBuy = function(){
   if (toBuy.length === 0) {
     return true;
     else return false;
 }
      
-service.emptyalreadyBought = function(){
+service.emptyAlreadyBought = function(){
 			if (alreadyBought.length === 0){
 				return true;
 			}
