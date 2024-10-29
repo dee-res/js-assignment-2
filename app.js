@@ -8,17 +8,18 @@ angular.module('ShoppingListCheckOff', [])
 
 // To Buy Controller
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
-function ToBuyController(ShoppingListCheckOffService) {
+function ToBuyController(ShoppingListCheckOffService){
   var toBuy = this; 
   
-  toBuy.bought = function (index) {
-    ShoppingListCheckOffService.alreadyBought(index); 
+  toBuy.bought = function (index){
+    ShoppingListCheckOffService.alreadyBoughtItems(index); 
   }
   toBuy.isEmpty = function()
+  {
     return ShoppingListCheckOffService.emptytoBuy();
 }
   
-  toBuy.items = ShoppingListCheckOffService.showtoBuy();
+  toBuy.items = ShoppingListCheckOffService.showtoBuyItems();
     }
   
   // Already Bought Controller
@@ -27,7 +28,7 @@ function ToBuyController(ShoppingListCheckOffService) {
  function AlreadyBoughtController(ShoppingListCheckOffService) {
     var alreadyBought = this;
     
-    alreadyBought.items = ShoppingListCheckOffService.showalreadyBought();
+    alreadyBought.items = ShoppingListCheckOffService.showalreadyBoughtItems();
     
 	alreadyBought.isEmpty = function() {
 			return ShoppingListCheckOffService.emptyalreadyBought();
@@ -35,7 +36,7 @@ function ToBuyController(ShoppingListCheckOffService) {
 	}
 
   //Service Definition
-   function ShoppingListCheckOffService () {
+   function ShoppingListCheckOffService(){
     var service = this;
     var toBuy = [
       { name: "Cookies", quantity: "10"},
@@ -46,16 +47,16 @@ function ToBuyController(ShoppingListCheckOffService) {
       ];
   var alreadyBought = [];
 
-   service.alreadyBought = function (index) {
+   service.alreadyBoughtItems = function(index){
     alreadyBought.push(toBuy[index]);
     toBuy.splice(index,1);
   }
 
-  service.showtoBuy = function () {
+  service.showtoBuy = function(){
     return toBuy;
   };
 
-  service.showalreadyBought = function () {
+  service.showalreadyBought = function(){
     return alreadyBought;
   };
 service.emptytoBuy = function(){
