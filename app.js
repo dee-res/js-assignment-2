@@ -1,13 +1,12 @@
 (function () {
   'use strict';
 
-  angular.module('ShoppingListCheckOff', [])
+angular.module('ShoppingListCheckOff', [])
   .controller('ToBuyController', ToBuyController)
   .controller('AlreadyBoughtController', AlreadyBoughtController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
-  // To Buy Controller
-  
+// To Buy Controller
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService) {
   var toBuy = this; 
@@ -16,7 +15,7 @@ function ToBuyController(ShoppingListCheckOffService) {
     ShoppingListCheckOffService.alreadyBought(index); 
   }
   toBuy.isEmpty = function()
-    return ShoppingListCheckOffService.emptyBuy();
+    return ShoppingListCheckOffService.emptytoBuy();
 }
   
   toBuy.items = ShoppingListCheckOffService.showtoBuy();
@@ -30,8 +29,7 @@ function ToBuyController(ShoppingListCheckOffService) {
     
     alreadyBought.items = ShoppingListCheckOffService.showalreadyBought();
     
-	alreadyBought.isEmpty = function()
-		{
+	alreadyBought.isEmpty = function() {
 			return ShoppingListCheckOffService.emptyalreadyBought();
 		}
 	}
@@ -39,7 +37,7 @@ function ToBuyController(ShoppingListCheckOffService) {
   //Service Definition
    function ShoppingListCheckOffService () {
     var service = this;
-    var toBuyItems = [
+    var toBuy = [
       { name: "Cookies", quantity: "10"},
       { name: "Snickers" , quantity: "2"},
       { name: "Pears" , quantity: "4"},
